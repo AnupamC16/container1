@@ -15,7 +15,7 @@ import java.util.Map;
 public class HelloController {
 
     private static final String MOUNTED_VOLUME_PATH = "/data"; // PV mount path
-    private static final String CONTAINER_2_URL = "http://container2:8000/calculate"; // Container 2 service in GKE
+    private static final String CONTAINER_2_URL = "http://container2:8000/process"; // Container 2 service in GKE
 
     @PostMapping("/store-file")
     public ResponseEntity<Map<String, Object>> storeFile(@RequestBody Map<String, String> request) {

@@ -1,0 +1,29 @@
+steps:
+  # Build the Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest",
+        ".",
+      ]
+  # Push the image to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest",
+      ]
+  # Update the GKE deployment with the new image
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      [
+        "set",
+        "image",
+        "deployment/container1-deployment",
+        "container1=us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest",
+      ]
+    env:
+      - "CLOUDSTACK_COMPUTE_REGION=us-central1"
+      - "CLOUDSTACK_CONTAINER_CLUSTER=assignment-cluster"

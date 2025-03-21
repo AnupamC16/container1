@@ -19,7 +19,10 @@ steps:
     args:
       - "-c"
       - |
-        gcloud container clusters get-credentials assignment-cluster --zone us-central1-c  # Updated zone
+        gcloud container clusters get-credentials assignment-cluster --zone us-central1-c  
         kubectl apply -f pvc.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
+
+options:
+  logging: CLOUD_LOGGING_ONLY

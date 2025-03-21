@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built Spring Boot JAR file into the container
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY target/container1-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port
 EXPOSE 6000

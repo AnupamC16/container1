@@ -113,7 +113,7 @@ public class HelloController {
             }
         } catch (Exception e) {
             response.put("file", fileName);
-            response.put("error", "Failed to communicate with processing service.");
+            response.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Container1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Container1Application.class, args); // trigger //
+		SpringApplication.run(Container1Application.class, args); // trigger // works
 	}
 
 }

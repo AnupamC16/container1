@@ -19,7 +19,7 @@ public class HelloController {
 
     private static final Logger LOGGER = Logger.getLogger(HelloController.class.getName());
     private static final String STORAGE_DIR = "/anupam_PV_dir";
-    private static final String CONTAINER_2_URL = "http://container-2:8000/process";
+    private static final String CONTAINER_2_URL = "http://container-2-service:8000/process";
 
     @PostMapping("/store-file")
     public ResponseEntity<Map<String, Object>> storeFile(@RequestBody Map<String, String> request) {

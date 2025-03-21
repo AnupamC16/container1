@@ -90,7 +90,7 @@ public class HelloController {
         }
 
         Map<String, String> request = new HashMap<>();
-        request.put("file_content", fileContent);
+        request.put("file", file.getName());
         request.put("product", product);
 
         RestTemplate restTemplate = new RestTemplate();

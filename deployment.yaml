@@ -12,17 +12,17 @@ spec:
       labels:
         app: container-1
     spec:
-      tolerations:
-        - key: "node.kubernetes.io/disk-pressure"
-          operator: "Exists"
-          effect: "NoSchedule"
       containers:
         - name: container-1
           image: us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest
+          ports:
+            - containerPort: 6000
           volumeMounts:
-            - mountPath: /anupam_PV_dir
+            - mountPath: "/anupam_PV_dir"
               name: standard-volume
       volumes:
         - name: standard-volume
           persistentVolumeClaim:
             claimName: anupam-pvc
+      nodeSelector:
+        cloud.google.com/gke-nodepool: "primary-node-pool" # Ensure pods run on the correct node pool

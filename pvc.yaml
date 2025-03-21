@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: anupam-pvc
 spec:
-  storageClassName: standard-rwo
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
+  storageClassName: standard

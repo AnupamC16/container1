@@ -1,36 +1,25 @@
 steps:
-  # Step 1: Build the JAR using Maven
   - name: "gcr.io/cloud-builders/mvn"
     args: ["package", "-DskipTests"]
 
-  # Step 2: Build the Docker image
   - name: "gcr.io/cloud-builders/docker"
     args:
-      [
-        "build",
-        "-t",
-        "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest",
-        ".",
-      ]
+      - "build"
+      - "-t"
+      - "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest"
+      - "."
 
-  # Step 3: Push the Docker image to Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
     args:
-      [
-        "push",
-        "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest",
-      ]
+      - "push"
+      - "us-central1-docker.pkg.dev/my-gke-project-454300/microservices-repo/container1:latest"
 
-  # Step 4: Deploy to GKE
   - name: "gcr.io/cloud-builders/kubectl"
     entrypoint: "bash"
     args:
       - "-c"
       - |
-        gcloud container clusters get-credentials assignment-cluster --zone us-central1
+        gcloud container clusters get-credentials assignment-cluster --zone us-central1-c  # Updated zone
         kubectl apply -f pvc.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
-
-options:
-  logging: CLOUD_LOGGING_ONLY

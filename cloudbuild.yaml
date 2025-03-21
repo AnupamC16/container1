@@ -19,7 +19,7 @@ steps:
     args:
       - "-c"
       - |
-        gcloud container clusters get-credentials assignment-cluster --zone us-central1-c  
+        gcloud container clusters get-credentials anupam-gke-cluster --zone us-central1
         kubectl apply -f pvc.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml

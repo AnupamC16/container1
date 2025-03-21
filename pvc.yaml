@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: anupam-pvc
 spec:
+  storageClassName: standard-rwo # GKE default dynamic provisioner
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: standard-rwo

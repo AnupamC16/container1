@@ -104,8 +104,8 @@ public class HelloController {
                 return ResponseEntity.ok(response);
             } else if (result != null && result.containsKey("error")) {
                 response.put("file", fileName);
-                response.put("error", result.get("error"));
-                return ResponseEntity.badRequest().body(response);
+                response.put("error", "Input file not in CSV format.");
+                return ResponseEntity.ok(response);
             } else {
                 response.put("file", fileName);
                 response.put("error", "Unexpected response from processing service.");

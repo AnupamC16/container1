@@ -103,7 +103,8 @@ public class HelloController {
                 response.put("sum", result.get("sum"));
                 return ResponseEntity.ok(response);
             } else if (result != null && result.containsKey("error")) {
-                response.put("file", fileName);
+                String adjustedFilename = fileName.replaceFirst("^file-", "");
+                response.put("file", adjustedFilename);
                 response.put("error", result.get("error"));
                 return ResponseEntity.badRequest().body(response);
             } else {

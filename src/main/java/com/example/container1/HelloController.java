@@ -90,7 +90,7 @@ public class HelloController {
         }
 
         Map<String, String> request = new HashMap<>();
-        request.put("file", file.getName());
+        request.put("file", fileName);
         request.put("product", product);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -104,7 +104,7 @@ public class HelloController {
                 return ResponseEntity.ok(response);
             } else if (result != null && result.containsKey("error")) {
                 response.put("file", fileName);
-                response.put("error", "input file not in CSV format.");
+                response.put("error", "input file not in CSV format..");
                 return ResponseEntity.badRequest().body(response);
             } else {
                 response.put("file", fileName);

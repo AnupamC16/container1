@@ -103,9 +103,8 @@ public class HelloController {
                 response.put("sum", result.get("sum"));
                 return ResponseEntity.ok(response);
             } else if (result != null && result.containsKey("error")) {
-                String adjustedFilename = fileName.replaceFirst("^file-", "");
-                response.put("file", adjustedFilename);
-                response.put("error", result.get("error"));
+                response.put("file", fileName);
+                response.put("error", "Input file not in CSV format..");
                 return ResponseEntity.badRequest().body(response);
             } else {
                 response.put("file", fileName);
